@@ -17,19 +17,19 @@ limitations under the License.
 package driver
 
 import (
-	"github.com/container-storage-interface/spec/lib/go/csi"
-	log "github.com/sirupsen/logrus"
 	"github.com/SynologyOpenSource/synology-csi/pkg/interfaces"
 	"github.com/SynologyOpenSource/synology-csi/pkg/utils"
+	"github.com/container-storage-interface/spec/lib/go/csi"
+	log "github.com/sirupsen/logrus"
 )
 
 const (
-	DriverName = "csi.san.synology.com" // CSI dirver name
+	DriverName    = "csi.san.synology.com" // CSI dirver name
 	DriverVersion = "1.1.1"
 )
 
 var (
-	MultipathEnabled = true
+	MultipathEnabled      = true
 	supportedProtocolList = []string{utils.ProtocolIscsi, utils.ProtocolSmb}
 )
 
@@ -79,7 +79,7 @@ func NewControllerAndNodeDriver(nodeID string, endpoint string, dsmService inter
 	d.addNodeServiceCapabilities([]csi.NodeServiceCapability_RPC_Type{
 		csi.NodeServiceCapability_RPC_STAGE_UNSTAGE_VOLUME,
 		csi.NodeServiceCapability_RPC_EXPAND_VOLUME,
-		csi.NodeServiceCapability_RPC_VOLUME_MOUNT_GROUP,
+		// csi.NodeServiceCapability_RPC_VOLUME_MOUNT_GROUP,
 		// csi.NodeServiceCapability_RPC_GET_VOLUME_STATS, //TODO
 	})
 
